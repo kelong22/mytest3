@@ -1,0 +1,14 @@
+server:
+  port: 7001
+spring:
+  application:
+    name: eureka-server
+eureka:
+  client:
+    register-with-eureka: false #是否将自己注册到Eureka中
+    fetch-registry: false #是否从eureka中获取服务信息
+    service-url:
+      dafaultzone: http://localhost:7001/eureka # EurekaServer的地址
+
+application:
+  name: user-provider

@@ -1,0 +1,26 @@
+# 注释版本
+server:
+  port: 18084
+
+# Eureka服务中心配置
+eureka:
+  client:
+    service-url:
+      # 注册Eureka Server集群
+      defaultZone: http://127.0.0.1:7001/eureka
+
+spring:
+  application:
+    # 应用名
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        #id唯一标识，可自定义
+        - id: user-service-route
+          #路由的服务地址
+          #uri: http://localhost:18081
+          uri: lb://user-provider
+          # 路由拦截的地址配置（断言）
+          predicates:
+            - Path=/user/**
